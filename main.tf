@@ -16,8 +16,8 @@ resource "hcloud_server" "this" {
   })
 
   public_net {
-    ipv4_enabled = false
-    ipv6_enabled = false
+    ipv4_enabled = var.public_net_config.ipv4_enabled
+    ipv6_enabled = var.public_net_config.ipv6_enabled
   }
 
   network {

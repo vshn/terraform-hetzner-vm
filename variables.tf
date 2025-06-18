@@ -66,3 +66,14 @@ variable "depends_on_resource" {
   default     = null
 }
 
+variable "public_net_config" {
+  description = "Configure public networking (IPv4/IPv6)"
+  type = object({
+    ipv4_enabled = bool
+    ipv6_enabled = bool
+  })
+  default = {
+    ipv4_enabled = false
+    ipv6_enabled = false
+  }
+}
