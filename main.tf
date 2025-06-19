@@ -1,7 +1,3 @@
-data "hcloud_network" "this" {
-  name = var.network_name
-}
-
 resource "hcloud_server" "this" {
   count       = var.instance_count
   name        = "${var.name_prefix}${count.index + 1}.${var.stage}"
