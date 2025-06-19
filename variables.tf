@@ -49,8 +49,8 @@ variable "network_prefix" {
   default     = "10.0.2"
 }
 
-variable "network_name" {
-  description = "Name of the Hetzner private network"
+variable "network_id" {
+  description = "Hetzner network ID to attach to"
   type        = string
 }
 

@@ -21,7 +21,7 @@ resource "hcloud_server" "this" {
   }
 
   network {
-    network_id = data.hcloud_network.this.id
+    network_id = var.network_id
     ip         = "${var.network_prefix}.${count.index + var.ip_offset}"
   }
 
