@@ -1,4 +1,4 @@
-resource "hcloud_server" "this" {
+resource "hcloud_server" "vm" {
   count       = var.instance_count
   name        = "${var.name_prefix}${count.index + 1}.${var.stage}"
   image       = var.image
@@ -35,7 +35,7 @@ resource "hcloud_volume" "disk" {
   size     = var.volume_size
 }
 
-resource "hcloud_volume_attachment" "attach" {
+resource "hcloud_volume_attachment" "volume_attachment" {
   count     = var.instance_count
   volume_id = hcloud_volume.disk[count.index].id
   server_id = hcloud_server.this[count.index].id
