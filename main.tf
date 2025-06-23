@@ -38,6 +38,6 @@ resource "hcloud_volume" "disk" {
 resource "hcloud_volume_attachment" "volume_attachment" {
   count     = var.instance_count
   volume_id = hcloud_volume.disk[count.index].id
-  server_id = hcloud_server.this[count.index].id
+  server_id = hcloud_server.vm[count.index].id
   automount = true
 }
