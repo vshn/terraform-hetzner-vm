@@ -28,16 +28,16 @@ resource "hcloud_server" "vm" {
   depends_on = [var.depends_on_resource]
 }
 
-resource "hcloud_volume" "disk" {
-  count    = var.instance_count
-  name     = "${var.name_prefix}_disk${count.index}"
+resource "hcloud_volume" "volume" {
+  count    = var.volume.enabled ? var.instance_count : 0
+  name     = "${var.name_prefix}_volume${count.index}"
   location = var.location
-  size     = var.volume_size
+  size     = var.volume.size
 }
 
 resource "hcloud_volume_attachment" "volume_attachment" {
-  count     = var.instance_count
-  volume_id = hcloud_volume.disk[count.index].id
+  count     = var.volume.enabled ? var.instance_count : 0
+  volume_id = hcloud_volume.volume[count.index].id
   server_id = hcloud_server.vm[count.index].id
   automount = true
 }

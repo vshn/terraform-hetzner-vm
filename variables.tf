@@ -38,9 +38,16 @@ variable "ssh_keys" {
   default = []
 }
 
-variable "volume_size" {
-  type    = number
-  default = 10
+variable "volume" {
+  description = "Optional volume configuration"
+  type = object({
+    enabled = bool
+    size    = number
+  })
+  default = {
+    enabled = false
+    size    = 0
+  }
 }
 
 variable "network_prefix" {
