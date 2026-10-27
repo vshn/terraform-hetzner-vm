@@ -6,7 +6,7 @@ resource "hcloud_server" "vm" {
   keep_disk   = true
   location    = var.location
   ssh_keys    = var.ssh_keys
-  user_data   = templatefile("${path.module}/cloud-init.tftpl", {
+  user_data = templatefile("${path.module}/cloud-init.tftpl", {
     host = "${var.name_prefix}${count.index + 1}",
     fqdn = "${var.name_prefix}${count.index + 1}.${var.stage}.${var.domain}"
   })

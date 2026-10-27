@@ -3,5 +3,5 @@ output "server_names" {
 }
 
 output "private_ips" {
-  value = [for s in hcloud_server.vm: s.ipv4_address]
+  value = [for s in hcloud_server.vm : s.ipv4_address]
 }
